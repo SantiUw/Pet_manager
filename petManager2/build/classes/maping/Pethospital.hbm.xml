@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 23/06/2023, 12:39:54 p. m. by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="maping.Pethospital" table="pethospital" catalog="pet_manager" optimistic-lock="version">
+        <id name="pethCode" type="string">
+            <column name="peth_code" length="3" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="pet" class="maping.Pet" fetch="select">
+            <column name="peth_pet" length="3" not-null="true" />
+        </many-to-one>
+        <many-to-one name="veterinary" class="maping.Veterinary" fetch="select">
+            <column name="peth_vete" length="10" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

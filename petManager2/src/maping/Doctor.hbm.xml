@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 23/06/2023, 12:39:54 p. m. by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="maping.Doctor" table="doctor" catalog="pet_manager" optimistic-lock="version">
+        <id name="docCode" type="string">
+            <column name="doc_code" length="10" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="veterinary" class="maping.Veterinary" fetch="select">
+            <column name="doc_veterinary" length="10" not-null="true" />
+        </many-to-one>
+        <property name="docName" type="string">
+            <column name="doc_name" length="30" not-null="true" />
+        </property>
+        <property name="docLicencia" type="string">
+            <column name="doc_licencia" length="20" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="petManager1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/petManager2/dist/petManager1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

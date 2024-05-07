@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 23/06/2023, 12:39:54 p. m. by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="maping.Veterinary" table="veterinary" catalog="pet_manager" optimistic-lock="version">
+        <id name="vetCode" type="string">
+            <column name="vet_code" length="10" />
+            <generator class="assigned" />
+        </id>
+        <property name="vetName" type="string">
+            <column name="vet_name" length="20" not-null="true" />
+        </property>
+        <property name="vetPhone" type="string">
+            <column name="vet_phone" length="20" not-null="true" />
+        </property>
+        <property name="vetAddres" type="string">
+            <column name="vet_addres" length="30" not-null="true" />
+        </property>
+        <property name="vetPacientType" type="string">
+            <column name="vet_pacientType" length="10" not-null="true" />
+        </property>
+        <set name="doctors" table="doctor" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="doc_veterinary" length="10" not-null="true" />
+            </key>
+            <one-to-many class="maping.Doctor" />
+        </set>
+        <set name="pethospitals" table="pethospital" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="peth_vete" length="10" not-null="true" />
+            </key>
+            <one-to-many class="maping.Pethospital" />
+        </set>
+    </class>
+</hibernate-mapping>

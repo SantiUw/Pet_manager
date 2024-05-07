@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 23/06/2023, 12:39:54 p. m. by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="maping.Cat" table="cat" catalog="pet_manager" optimistic-lock="version">
+        <id name="catCode" type="string">
+            <column name="cat_code" length="5" />
+            <generator class="foreign">
+                <param name="property">pet</param>
+            </generator>
+        </id>
+        <one-to-one name="pet" class="maping.Pet" constrained="true"></one-to-one>
+        <property name="catBreed" type="string">
+            <column name="cat_breed" length="20" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

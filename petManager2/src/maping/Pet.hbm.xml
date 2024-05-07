@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 23/06/2023, 12:39:54 p. m. by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="maping.Pet" table="pet" catalog="pet_manager" optimistic-lock="version">
+        <id name="petCode" type="string">
+            <column name="pet_code" length="3" />
+            <generator class="assigned" />
+        </id>
+        <property name="petName" type="string">
+            <column name="pet_name" length="20" not-null="true" />
+        </property>
+        <property name="petBornYear" type="int">
+            <column name="pet_bornYear" not-null="true" />
+        </property>
+        <property name="petColor" type="string">
+            <column name="pet_color" length="10" not-null="true" />
+        </property>
+        <property name="petHealthStatus" type="string">
+            <column name="pet_healthStatus" length="20" not-null="true" />
+        </property>
+        <set name="pethospitals" table="pethospital" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="peth_pet" length="3" not-null="true" />
+            </key>
+            <one-to-many class="maping.Pethospital" />
+        </set>
+        <one-to-one name="dog" class="maping.Dog"></one-to-one>
+        <one-to-one name="cat" class="maping.Cat"></one-to-one>
+    </class>
+</hibernate-mapping>
